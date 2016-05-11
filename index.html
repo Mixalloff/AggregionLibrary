@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>AGGREGION библиотека</title>
+    <!-- Angular libraries -->
+    <script type='text/javascript' src= "bower_components/angular/angular.min.js"></script>
+    <script type='text/javascript' src= "bower_components/angular-aria/angular-aria.min.js"></script>
+    <script type='text/javascript' src= "bower_components/angular-animate/angular-animate.min.js"></script>
+    <script type='text/javascript' src= "bower_components/angular-material/angular-material.min.js"></script> 
+    <script type='text/javascript' src='bower_components/angular-route/angular-route.js'></script>
+    <!-- Modules -->
+    <script src="js/modules/library/library.js"></script>
+    <!-- Controllers -->
+    <script src="js/modules/library/controllers/appCtrl.js"></script>
+    <script src="js/modules/library/controllers/libraryCtrl.js"></script>
+    <script src="js/modules/library/controllers/bookDetailCtrl.js"></script>
+    <script src="js/modules/library/controllers/pageNotFoundCtrl.js"></script>
+    
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Icons from https://design.google.com/icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body ng-app="libraryApp" layout="column" ng-cloak ng-controller="appCtrl">
+    <md-toolbar layout="row">
+       <div class="md-toolbar-tools">
+        <md-button ng-show="!isOpen('left')" ng-click="toogleNav('left')" class="md-icon-button" aria-label="Settings">
+          <md-icon aria-label="Menu" class="material-icons">menu</md-icon>
+        </md-button>
+        <h2>
+          <span>Библиотека Aggregion</span>
+        </h2>
+        <span flex></span>
+        <md-button  onclick="alert('More')" class="md-icon-button" aria-label="More"> 
+          <i class="material-icons">more_vert</i>
+        </md-button>
+      </div>
+   </md-toolbar>
+   
+   <div flex layout="row">
+        <md-sidenav layout="column" md-component-id="left" class="md-sidenav-left md-whiteframe-z2">
+          <md-toolbar layout="row">Menu</md-toolbar>
+          <md-content flex id="content" flex role="navigation">
+            <md-button class="menu-row" layout="row" > 
+              <i class="material-icons menu-icon">desktop_windows </i><div flex></div>
+            </md-button>
+          </md-content>
+          
+        </md-sidenav>
+        <md-content flex id="content">
+            <ng-view></ng-view>
+        </md-content>
+   </div>
+</body>
+</html>

@@ -1,6 +1,14 @@
+"use strict";
 var templates = "/../../../templates";
 
-angular.module('libraryApp', ['ngMaterial', 'ngRoute'])
+angular.module('libraryApp', ['ngMaterial', 'ngRoute', 'ngResource', 'ngCookies'])
+.config(['$resourceProvider', function($resourceProvider){
+    $resourceProvider.defaults.stripTrailingSlashes = false;
+}])
+.run(['$http', '$cookies', function($http, $cookies) {
+    $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+    $http.defaults.headers.common['X-CSRFToken'] = $cookies.csrftoken;
+}])
 .config(function ($routeProvider, $locationProvider) {
 	'use strict';
 	$locationProvider.html5Mode({

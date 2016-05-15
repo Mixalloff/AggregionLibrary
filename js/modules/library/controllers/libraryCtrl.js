@@ -7,7 +7,7 @@ libraryApp.factory('Books', ['$resource', 'commonConstants', function($resource,
 			return $resource(commonConstants.serverAPI + '/public/catalog', {});
 		},
         detail: function (id) {
-            return $resource(commonConstants.serverAPI + '/public/catalog/:bookId', { bookId: id });
+            return $resource(commonConstants.serverAPI + '/public/catalog/:book_id', { book_id: id });
         }
 	}
 }]);
@@ -20,10 +20,6 @@ libraryApp.controller('libraryCtrl', ['$scope', '$resource', 'Books',
             .$promise.then(function(books) {
                 $scope.books = books;
             });
-        
-        $scope.bookCover = function(coverId) {
-            return "https://storage.aggregion.com/api/files/" + coverId + "/shared/data";
-        };
 }]);
 
 // Директива для установки изображения по умолчанию
@@ -36,6 +32,18 @@ libraryApp.directive('defaultSrc', ['commonConstants', function(commonConstants)
     }
   }
 }]);
+
+libraryApp.directive('coverImg', function() {
+  return {
+    link: function($scope, element, attrs) {
+        $scope.$watch(attrs.coverImg,function(value){
+                attrs.$set('src', "https://storage.aggregion.com/api/files/" + value + "/shared/data");
+            }
+        );
+       
+    }
+  }
+});
 
 // Отношение высоты и ширины
 // libraryApp.directive('ratioCell', ['commonConstants', function(commonConstants) {

@@ -1,3 +1,14 @@
-<div>
-    detail page
+<div>   
+    <!--<div>{{bookInfo}}</div>-->
+    <img cover-img="bookInfo.cover" default-src alt={{bookInfo.title.default}}>
+    <h2>{{bookInfo.title.default}}</h2>
+    <div>
+        <h3>Описание</h3>
+        {{bookInfo.description.default}}<
+    </div>
+    <md-list>
+      <md-list-item ng-repeat="(optionName, option) in bookInfo.options">
+        {{optionName + " : " + option}}
+      </md-list-item>
+    </md-list>
 </div>

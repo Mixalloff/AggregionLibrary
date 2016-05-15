@@ -10,7 +10,7 @@
           <md-grid-tile class = "cell"
                         ng-repeat="book in books">
                 <a ui-sref="bookDetail({book_id: book.id})">
-                    <img ratio-cell ng-src={{bookCover(book.cover)}} default-src alt={{book.title.default}}>
+                    <img cover-img="book.cover" default-src alt={{book.title.default}}>
                     <md-grid-tile-footer>
                         <h3>{{book.title.default}}</h3>
                     </md-grid-tile-footer>

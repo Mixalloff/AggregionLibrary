@@ -23,7 +23,7 @@ angular.module('libraryApp', ['ngMaterial', 'ui.router', 'ngResource', 'ngCookie
             controller: 'libraryCtrl'
         })
         .state('bookDetail', {
-            url: '/book_detail/:book_id',
+            url: '/book_detail/{:book_id}',
             templateUrl: templates + '/book_detail.html',
             controller: 'bookDetailCtrl'
         })

@@ -1,16 +1,11 @@
 <div>
     main page
     <div>
-        <!--<a href="" ng-repeat="book in books">
-            <img ng-src={{bookCover(book.cover)}} default-src alt={{book.title.default}}>
-            <div>{{book.title.default}}</div>
-        </a>-->
-        
-        <md-grid-list md-cols="5" md-gutter="1em" md-row-height="1:1.5">
+        <md-grid-list md-cols="8" md-gutter="1em" md-row-height="1:1.5">
           <md-grid-tile class = "cell"
                         ng-repeat="book in books">
                 <a ui-sref="bookDetail({book_id: book.id})">
-                    <img cover-img="book.cover" default-src alt={{book.title.default}}>
+                    <cover-img cover-id="{{book.cover}}" cover-title="{{book.title.default}}"></cover-img> 
                     <md-grid-tile-footer>
                         <h3>{{book.title.default}}</h3>
                     </md-grid-tile-footer>

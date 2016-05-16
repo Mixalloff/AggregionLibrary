@@ -15,47 +15,31 @@ libraryApp.factory('Books', ['$resource', 'commonConstants', function($resource,
 // Контроллер библиотеки
 libraryApp.controller('libraryCtrl', ['$scope', '$resource', 'Books',
     function($scope, $resource, Books) {
-        //var Books = $resource(serverAPI + '/public/catalog', {});
         Books.all().query({method:'GET', isArray:true})
             .$promise.then(function(books) {
                 $scope.books = books;
             });
 }]);
 
-// Директива для установки изображения по умолчанию
-libraryApp.directive('defaultSrc', ['commonConstants', function(commonConstants) {
-  return {
-    link: function(scope, element, attrs) {
-      element.bind('error', function() {
-        attrs.$set('src', commonConstants.defaultImage);
-      });
-    }
-  }
-}]);
+libraryApp.directive('coverImg', ['commonConstants', function(commonConstants) {
+    return {
+        restrict: 'E',
+        template: '<img/>',
+        replace: true,
 
-libraryApp.directive('coverImg', function() {
-  return {
-    link: function($scope, element, attrs) {
-        $scope.$watch(attrs.coverImg,function(value){
+        link: function($scope, element, attrs) {
+            attrs.$observe('coverId', function(value) {
                 attrs.$set('src', "https://storage.aggregion.com/api/files/" + value + "/shared/data");
-            }
-        );
-       
+            });
+            attrs.$observe('coverTitle', function(value) {
+                attrs.$set('title', value);
+            });
+            element.bind('error', function() {
+                attrs.$set('src', commonConstants.defaultImage);
+            });
+        }
     }
-  }
-});
-
-// Отношение высоты и ширины
-// libraryApp.directive('ratioCell', ['commonConstants', function(commonConstants) {
-//   return {
-//     link: function(scope, element, attrs) {
-//       element.bind('load', function() {
-//         console.log(element);
-//         element.parent(".cell").css( "background", "yellow" );
-//       });
-//     }
-//   }
-// }]);
+}]);
 
 // Константы
 libraryApp.constant('commonConstants', 

@@ -13,20 +13,26 @@ libraryApp.factory('Books', ['$resource', 'commonConstants', function($resource,
 }]);
 
 // Контроллер библиотеки
-libraryApp.controller('libraryCtrl', ['$scope', '$resource', 'Books',
-    function($scope, $resource, Books) {
-        Books.all().query({method:'GET', isArray:true})
-            .$promise.then(function(books) {
-                $scope.books = books;
-            });
+libraryApp.controller('libraryCtrl', ['$scope', '$resource', 'Books', 'allBooks',
+    function($scope, $resource, Books, allBooks) {
+        // Books.all().query({method:'GET', isArray:true})
+        //     .$promise.then(function(books) {
+        //         $scope.books = books;
+        //     });
+        
+        // goat.$promise.then(function(books) {
+        //      $scope.books = books;
+        // });
+        
+        $scope.books = allBooks;
 }]);
 
+// Директива для фото альбома
 libraryApp.directive('coverImg', ['commonConstants', function(commonConstants) {
     return {
         restrict: 'E',
         template: '<img/>',
         replace: true,
-
         link: function($scope, element, attrs) {
             attrs.$observe('coverId', function(value) {
                 attrs.$set('src', "https://storage.aggregion.com/api/files/" + value + "/shared/data");

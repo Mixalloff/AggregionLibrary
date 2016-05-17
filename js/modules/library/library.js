@@ -18,6 +18,16 @@ angular.module('libraryApp', ['ngMaterial', 'ui.router', 'ngResource', 'ngCookie
     
     $stateProvider
         .state('main', {
+            resolve: {
+                allBooks: function(Books, $q) {
+                    var deferred = $q.defer();
+                    Books.all().query({method:'GET', isArray:true})
+                        .$promise.then(function(books) {
+                            deferred.resolve(books);
+                        });
+                    return deferred.promise;
+                }
+            },
             url: '/',
             templateUrl: templates + '/library.html',
             controller: 'libraryCtrl'

@@ -44,7 +44,7 @@ libraryApp.controller('libraryCtrl', ['$scope', '$resource', 'Books', 'allBooks'
 libraryApp.directive('coverImg', ['commonConstants', function(commonConstants) {
     return {
         restrict: 'E',
-        template: '<img/>',
+        template: '<img class="coverImage"/>',
         replace: true,
         link: function($scope, element, attrs) {
             attrs.$observe('coverId', function(value) {

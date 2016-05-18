@@ -1,0 +1,45 @@
+.coverImage {
+    height: 100%;
+    width: auto;
+    margin: 0 auto;
+}
+
+.detailRef {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.detailRef:hover .titleFooter{
+    min-height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    margin: 0 auto;
+}
+
+.detailRef:hover .titleFooter>figcaption{
+    min-width: 100%;
+}
+
+.titleFooter {
+    background-color: rgba(0, 0, 0, .4);
+    height: auto;
+    padding: 15px 10px;
+    min-height: 0;
+    -webkit-transition: all ease-out 0.5s;
+       -moz-transition: all ease-out 0.5s;
+         -o-transition: all ease-out 0.5s;
+            transition: all ease-out 0.5s;
+}
+
+figcaption {
+    min-width: 0;
+    text-align: center;
+    -webkit-transition: all ease-out 0.1s;
+       -moz-transition: all ease-out 0.1s;
+         -o-transition: all ease-out 0.1s;
+            transition: all ease-out 0.1s;
+}
+
+.titleTextPreview {
+    font-size: .9em;
+}

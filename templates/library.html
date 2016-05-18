@@ -1,13 +1,18 @@
 <div>
     main page
     <div>
-        <md-grid-list md-cols="8" md-gutter="1em" md-row-height="1:1.5">
+        <md-grid-list md-cols-sm="2"
+                      md-cols-md="4"       
+                      md-cols-lg="6""
+                      md-cols-gt-lg="8"
+                      md-gutter="1em"
+                      md-row-height="1:1.5">
           <md-grid-tile class = "cell"
                         ng-repeat="book in books">
-                <a ui-sref="bookDetail({book_id: book.id})">
+                <a class="detailRef" ui-sref="bookDetail({book_id: book.id})">
                     <cover-img cover-id="{{book.cover}}" cover-title="{{book.title.default}}"></cover-img> 
-                    <md-grid-tile-footer>
-                        <h3>{{book.title.default}}</h3>
+                    <md-grid-tile-footer class="titleFooter">
+                        <div class="titleTextPreview">{{book.title.default}}</div>
                     </md-grid-tile-footer>
                 </a>
           </md-grid-tile>

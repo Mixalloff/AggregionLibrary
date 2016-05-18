@@ -12,18 +12,22 @@ libraryApp.factory('Books', ['$resource', 'commonConstants', function($resource,
 	}
 }]);
 
+libraryApp.factory('Loader', ['commonConstants', 'Books', '$q', function(commonConstants, Books, $q) {
+    return {
+		all: function() {
+            var deferred = $q.defer();
+            Books.all().query({method:'GET', isArray:true})
+                .$promise.then(function(books) {
+                    deferred.resolve(books);
+                });
+            return deferred.promise;
+		},
+	}
+}]);
+
 // Контроллер библиотеки
 libraryApp.controller('libraryCtrl', ['$scope', '$resource', 'Books', 'allBooks',
-    function($scope, $resource, Books, allBooks) {
-        // Books.all().query({method:'GET', isArray:true})
-        //     .$promise.then(function(books) {
-        //         $scope.books = books;
-        //     });
-        
-        // goat.$promise.then(function(books) {
-        //      $scope.books = books;
-        // });
-        
+    function($scope, $resource, Books, allBooks) {        
         $scope.books = allBooks;
 }]);
 

@@ -12,6 +12,7 @@ libraryApp.factory('Books', ['$resource', 'commonConstants', function($resource,
 	}
 }]);
 
+// Сервис загрузки данных
 libraryApp.factory('Loader', ['commonConstants', 'Books', '$q', function(commonConstants, Books, $q) {
     return {
 		all: function() {
@@ -19,6 +20,14 @@ libraryApp.factory('Loader', ['commonConstants', 'Books', '$q', function(commonC
             Books.all().query({method:'GET', isArray:true})
                 .$promise.then(function(books) {
                     deferred.resolve(books);
+                });
+            return deferred.promise;
+		},
+        bookDetail: function(book_id) {
+            var deferred = $q.defer();
+            Books.detail(book_id).get({method:'GET'})
+                .$promise.then(function(bookInfo) {
+                    deferred.resolve(bookInfo);
                 });
             return deferred.promise;
 		},

@@ -19,7 +19,7 @@ angular.module('libraryApp', ['ngMaterial', 'ui.router', 'ngResource', 'ngCookie
     $stateProvider
         .state('main', {
             resolve: {
-                allBooks: function($q, Loader) {
+                allBooks: function(Loader) {
                     return Loader.all();
                 }
             },
@@ -28,6 +28,11 @@ angular.module('libraryApp', ['ngMaterial', 'ui.router', 'ngResource', 'ngCookie
             controller: 'libraryCtrl'
         })
         .state('bookDetail', {
+            resolve: {
+                bookInfo: function(Loader, $stateParams) {
+                    return Loader.bookDetail($stateParams.book_id);
+                }
+            },
             url: '/book_detail/{:book_id}',
             templateUrl: templates + '/book_detail.html',
             controller: 'bookDetailCtrl'

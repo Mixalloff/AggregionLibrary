@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../css/main_page.css">
 <div>
     main page
     <div>
@@ -10,7 +11,7 @@
           <md-grid-tile class = "cell"
                         ng-repeat="book in books">
                 <a class="detailRef" ui-sref="bookDetail({book_id: book.id})">
-                    <cover-img cover-id="{{book.cover}}" cover-title="{{book.title.default}}"></cover-img> 
+                    <cover-img  class="coverImage" cover-id="{{book.cover}}" cover-title="{{book.title.default}}"></cover-img> 
                     <md-grid-tile-footer class="titleFooter">
                         <div class="titleTextPreview">{{book.title.default}}</div>
                     </md-grid-tile-footer>

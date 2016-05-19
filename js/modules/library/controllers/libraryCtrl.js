@@ -8,6 +8,9 @@ libraryApp.factory('Books', ['$resource', 'commonConstants', function($resource,
 		},
         detail: function (id) {
             return $resource(commonConstants.serverAPI + '/public/catalog/:book_id', { book_id: id });
+        },
+        bundles: function (id) {
+            return $resource(commonConstants.serverAPI + '/public/catalog/:book_id/bundles', { book_id: id });
         }
 	}
 }]);
@@ -31,6 +34,14 @@ libraryApp.factory('Loader', ['commonConstants', 'Books', '$q', function(commonC
                 });
             return deferred.promise;
 		},
+        bookBundles: function(book_id) {
+            var deferred = $q.defer();
+            Books.bundles(book_id).query({method:'GET', isArray:true})
+                .$promise.then(function(bundles) {
+                    deferred.resolve(bundles);
+                });
+            return deferred.promise;
+		},
 	}
 }]);
 
@@ -44,11 +55,14 @@ libraryApp.controller('libraryCtrl', ['$scope', '$resource', 'Books', 'allBooks'
 libraryApp.directive('coverImg', ['commonConstants', function(commonConstants) {
     return {
         restrict: 'E',
-        template: '<img class="coverImage"/>',
+        template: '<img/>',
         replace: true,
         link: function($scope, element, attrs) {
             attrs.$observe('coverId', function(value) {
                 attrs.$set('src', "https://storage.aggregion.com/api/files/" + value + "/shared/data");
+            });
+            attrs.$observe('class', function(value) {
+                attrs.$set('class', value);
             });
             attrs.$observe('coverTitle', function(value) {
                 attrs.$set('title', value);

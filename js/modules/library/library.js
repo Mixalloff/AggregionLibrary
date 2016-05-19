@@ -31,6 +31,9 @@ angular.module('libraryApp', ['ngMaterial', 'ui.router', 'ngResource', 'ngCookie
             resolve: {
                 bookInfo: function(Loader, $stateParams) {
                     return Loader.bookDetail($stateParams.book_id);
+                },
+                bookBundles: function(Loader, $stateParams) {
+                    return Loader.bookBundles($stateParams.book_id);
                 }
             },
             url: '/book_detail/{:book_id}',

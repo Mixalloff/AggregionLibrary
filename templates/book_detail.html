@@ -1,13 +1,21 @@
+<link rel="stylesheet" href="../css/detail_page.css">
 <div>   
-    <cover-img cover-id="{{bookInfo.cover}}" cover-title="{{bookInfo.title.default}}"></cover-img>
+    <cover-img class="coverImage" cover-id="{{bookInfo.cover}}" cover-title="{{bookInfo.title.default}}"></cover-img>
     <h2>{{bookInfo.title.default}}</h2>
-    <div>
-        <h3>Описание</h3>
-        {{bookInfo.description.default}}<
-    </div>
     <md-list>
       <md-list-item ng-repeat="(optionName, option) in bookInfo.options">
         {{optionName + " : " + option}}
+      </md-list-item>
+    </md-list>
+    <div class="description">
+        <h3>Описание</h3>
+        {{bookInfo.description.default}}
+    </div>
+    
+    
+    <md-list>
+      <md-list-item ng-repeat="bundle in bundles">
+        {{bundle}}
       </md-list-item>
     </md-list>
 </div>

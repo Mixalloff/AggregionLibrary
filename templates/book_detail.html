@@ -15,7 +15,8 @@
     
     <md-list>
       <md-list-item ng-repeat="bundle in bundles">
-        {{bundle}}
+        <a ng-href="{{constructResourceString(bundle.resourceId)}}">{{bundle.id}}</a>
+        <!--{{bundle}}-->
       </md-list-item>
     </md-list>
 </div>

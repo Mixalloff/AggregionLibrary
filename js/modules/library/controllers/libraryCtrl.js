@@ -41,7 +41,7 @@ libraryApp.factory('Loader', ['commonConstants', 'Books', '$q', function(commonC
                     deferred.resolve(bundles);
                 });
             return deferred.promise;
-		},
+		}
 	}
 }]);
 
@@ -59,7 +59,7 @@ libraryApp.directive('coverImg', ['commonConstants', function(commonConstants) {
         replace: true,
         link: function($scope, element, attrs) {
             attrs.$observe('coverId', function(value) {
-                attrs.$set('src', "https://storage.aggregion.com/api/files/" + value + "/shared/data");
+               attrs.$set('src', commonConstants.loadResourceString(value));
             });
             attrs.$set('class', attrs.class);
             attrs.$observe('coverTitle', function(value) {
@@ -76,5 +76,8 @@ libraryApp.directive('coverImg', ['commonConstants', function(commonConstants) {
 libraryApp.constant('commonConstants', 
 {
     defaultImage: "https://storage.aggregion.com/api/files/12ce171be47031a58f6d12ddefca93d52bda709b1b720d50cf48747d6cd44cb6/shared/data",
-    serverAPI: "https://ds.aggregion.com/api"
+    serverAPI: "https://ds.aggregion.com/api",
+    loadResourceString: function(resourceId) {
+        return "https://storage.aggregion.com/api/files/" + resourceId + "/shared/data";
+    }
 });

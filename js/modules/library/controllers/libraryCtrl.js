@@ -61,9 +61,7 @@ libraryApp.directive('coverImg', ['commonConstants', function(commonConstants) {
             attrs.$observe('coverId', function(value) {
                 attrs.$set('src', "https://storage.aggregion.com/api/files/" + value + "/shared/data");
             });
-            attrs.$observe('class', function(value) {
-                attrs.$set('class', value);
-            });
+            attrs.$set('class', attrs.class);
             attrs.$observe('coverTitle', function(value) {
                 attrs.$set('title', value);
             });

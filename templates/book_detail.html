@@ -1,11 +1,14 @@
 <link rel="stylesheet" href="../css/detail_page.css">
-<div>   
+<!--<md-progress-circular md-mode="indeterminate"></md-progress-circular>-->
+<md-whiteframe class="md-whiteframe-2dp" layout-align="center center" layout="column">   
     <cover-img class="coverImage" cover-id="{{bookInfo.cover}}" cover-title="{{bookInfo.title.default}}"></cover-img>
     <h2>{{bookInfo.title.default}}</h2>
     <md-list>
       <md-list-item ng-repeat="(optionName, option) in bookInfo.options">
         {{optionName + " : " + option}}
+        <md-divider ng-if="!$last"></md-divider>
       </md-list-item>
+      
     </md-list>
     <div class="description">
         <h3>Описание</h3>
@@ -14,9 +17,10 @@
     
     
     <md-list>
+      <h3>Файлы</h3>
       <md-list-item ng-repeat="bundle in bundles">
         <a ng-href="{{constructResourceString(bundle.resourceId)}}">{{bundle.id}}</a>
         <!--{{bundle}}-->
       </md-list-item>
     </md-list>
-</div>
+</md-whiteframe>

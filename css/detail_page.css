@@ -18,3 +18,7 @@ md-whiteframe {
 .mainInfo {
     max-width: 70%;
 }
+
+md-content {
+    width: 100%;
+}

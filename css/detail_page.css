@@ -1,8 +1,20 @@
-.coverImage, .description, h3 {
+.coverImage, .description {
     float: left;
 }
 
 md-whiteframe {
     margin: 10px;
     padding: 10px;
+}
+
+.bundlesList {
+    width: 100%;
+}
+
+.info {
+    padding-left: 10px;
+}
+
+.mainInfo {
+    max-width: 70%;
 }

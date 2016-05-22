@@ -9,7 +9,8 @@ class Server {
     }
     
     initExpress(){
-        app.use(express.static(__dirname + '/'));
+        // app.use(express.static(__dirname + '/'));
+        // app.use(express.static(__dirname + '/compiled'));
         app.use(express.static(__dirname + '/clientApp'));
         app.use('*', function(req, res){
             res.sendFile(__dirname + '/clientApp/index.html');

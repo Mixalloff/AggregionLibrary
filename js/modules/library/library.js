@@ -25,7 +25,8 @@ angular.module('libraryApp', ['ngMaterial', 'ui.router', 'ngResource', 'ngCookie
             },
             url: '/',
             templateUrl: templates + '/library.html',
-            controller: 'libraryCtrl'
+            controller: 'libraryCtrl',
+            controllerAs: 'library'
         })
         .state('bookDetail', {
             resolve: {
@@ -38,7 +39,8 @@ angular.module('libraryApp', ['ngMaterial', 'ui.router', 'ngResource', 'ngCookie
             },
             url: '/book_detail/{:book_id}',
             templateUrl: templates + '/book_detail.html',
-            controller: 'bookDetailCtrl'
+            controller: 'bookDetailCtrl',
+            controllerAs: 'detail'
         })
         .state('page404', {
             url: '/404_page_not_found',

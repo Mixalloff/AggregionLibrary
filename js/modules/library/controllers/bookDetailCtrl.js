@@ -1,12 +1,13 @@
 var libraryApp=angular.module('libraryApp');
 
-libraryApp.controller("bookDetailCtrl", [ "$scope", "bookInfo", "bookBundles", "commonConstants",
-     function ($scope, bookInfo, bookBundles, commonConstants) {
-        $scope.bookInfo = bookInfo;
-        $scope.bundles = bookBundles;
+libraryApp.controller("bookDetailCtrl", ["bookInfo", "bookBundles", "Loader",
+     function (bookInfo, bookBundles, Loader) {
+        var vm = this;
+        vm.bookInfo = bookInfo;
+        vm.bundles = bookBundles;
         
-        $scope.constructResourceString = function (resourceId) {
-            return commonConstants.loadResourceString(resourceId);
+        vm.constructResourceString = function (resourceId) {
+            return Loader.loadResourceString(resourceId);
         }
      }
 ]); 

@@ -9,7 +9,7 @@
                       md-gutter="1em"
                       md-row-height="1:1.5">
           <md-grid-tile class = "cell"
-                        ng-repeat="book in books">
+                        ng-repeat="book in library.books">
                 <a class="detailRef" ui-sref="bookDetail({book_id: book.id})">
                     <cover-img  class="coverImage" cover-id="{{book.cover}}" cover-title="{{book.title.default}}"></cover-img> 
                     <md-grid-tile-footer class="titleFooter">

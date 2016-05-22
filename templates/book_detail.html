@@ -2,19 +2,19 @@
 <!--<md-progress-circular md-mode="indeterminate"></md-progress-circular>-->
 <section layout-align="center center" layout="column">   
     <md-whiteframe class="md-whiteframe-4dp mainInfo" layout>
-      <cover-img class="coverImage" cover-id="{{bookInfo.cover}}" cover-title="{{bookInfo.title.default}}"></cover-img>
+      <cover-img class="coverImage" cover-id="{{detail.bookInfo.cover}}" cover-title="{{detail.bookInfo.title.default}}"></cover-img>
       
       <div class="info">
-        <h2>{{bookInfo.title.default}}</h2>
+        <h2>{{detail.bookInfo.title.default}}</h2>
         <md-list>
-          <md-list-item ng-repeat="(optionName, option) in bookInfo.options">
+          <md-list-item ng-repeat="(optionName, option) in detail.bookInfo.options">
             {{optionName + " : " + option}}
             <md-divider ng-if="!$last"></md-divider>
           </md-list-item>
         </md-list>
         <md-list class="bundlesList" layout="row">
-          <md-list-item ng-repeat="bundle in bundles">
-            <a ng-href="{{constructResourceString(bundle.resourceId)}}">
+          <md-list-item ng-repeat="bundle in detail.bundles">
+            <a ng-href="{{detail.constructResourceString(bundle.resourceId)}}">
               <md-button class="md-raised">Скачать</md-button>
             </a>
             <!--{{bundle}}-->
@@ -25,7 +25,7 @@
     
     <md-content flex layout-padding class="description">
         <h3>Описание</h3>
-        {{bookInfo.description.default}}
+        {{detail.bookInfo.description.default}}
     </md-content>
     
     

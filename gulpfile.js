@@ -1,6 +1,7 @@
 var gulp  = require('gulp'),
     concat = require('gulp-concat'),
     mainBowerFiles = require('main-bower-files'),
+    order = require('gulp-order'),
     filter = require('gulp-filter');
 
 gulp.task('vendorsjs',function(){
@@ -23,4 +24,14 @@ gulp.task('vendorscss',function(){
 }))
   .pipe(concat('vendors.css'))
   .pipe(gulp.dest('clientApp/compiled/css'));
+});
+
+gulp.task('libraryjs',function(){
+  return gulp.src('clientApp/libraryApp/**/*.js')
+  .pipe(order([
+    "**/libraryApp.module.js",
+    "**/*.js"
+  ]))
+  .pipe(concat('libraryjs.js'))
+  .pipe(gulp.dest('clientApp/compiled/js'));
 });

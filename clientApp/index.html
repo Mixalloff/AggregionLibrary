@@ -5,37 +5,13 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <base href="/">
     <title>AGGREGION библиотека</title>
-    <!-- Angular libraries -->
-    <!--<script type='text/javascript' src= "../bower_components/angular/angular.js"></script>
-    <script type='text/javascript' src= "../bower_components/angular-aria/angular-aria.js"></script>
-    <script type='text/javascript' src= "../bower_components/angular-animate/angular-animate.js"></script>
-    <script type='text/javascript' src= "../bower_components/angular-material/angular-material.js"></script> 
-    <script type='text/javascript' src= "../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script type='text/javascript' src= "../bower_components/angular-resource/angular-resource.js"></script>
-    <script type='text/javascript' src= "../bower_components/angular-cookies/angular-cookies.js"></script>-->
-    
+    <!--Сторонние скрипты-->
     <script type='text/javascript' src= "/compiled/js/vendors.js"></script>
-    <link rel="stylesheet" href="/compiled/css/vendors.css">
-    <!--Модуль-->
-    <script src="libraryApp/libraryApp.module.js"></script>
-    <script src="libraryApp/libraryApp.config.js"></script>
-    <script src="libraryApp/libraryApp.constants.js"></script>
-    <script src="libraryApp/libraryApp.routes.js"></script>
-    <script src="libraryApp/libraryApp.controller.js"></script>
-    <!--Сервисы-->
-    <script src="libraryApp/services/booksAPI.service.js"></script>
-    <script src="libraryApp/services/loader.service.js"></script>
-    <!--Компоненты-->
-    <script src="libraryApp/components/coverImg.directive.js"></script>
-    <!--Главная страница библиотеки-->
-    <script src="libraryApp/libraryPage/library.controller.js"></script>
-    <!--Детальная страница книги-->
-    <script src="libraryApp/detailPage/detail.controller.js"></script>
+    <!--Модуль LIbrary-->
+    <script type='text/javascript' src= "/compiled/js/libraryjs.js"></script>
     
-    <!-- Angular Material style sheet -->
-    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">
-    <!-- Icons from https://design.google.com/icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Сторонние стили-->
+    <link rel="stylesheet" href="/compiled/css/vendors.css">
 </head>
 <body ng-app="libraryApp" layout="column" ng-cloak ng-controller="appCtrl">
    <div flex layout="row">

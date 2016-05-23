@@ -5,6 +5,9 @@ var gulp  = require('gulp'),
     filter = require('gulp-filter')
     exec = require('child_process').exec;
 
+// Путь к собранным файлам
+var buildPath = "clientApp/build";
+
 // Компоненты bower
 var vendorsJsFiles = mainBowerFiles({
   filter:'**/*.js',
@@ -22,13 +25,13 @@ var vendorsCssFiles = mainBowerFiles({
 gulp.task('vendorsjs',function(){
   return gulp.src(vendorsJsFiles)
   .pipe(concat('vendors.js'))
-  .pipe(gulp.dest('clientApp/compiled/js'));
+  .pipe(gulp.dest(buildPath + '/js'));
 });
 
 gulp.task('vendorscss',function(){
   return gulp.src(vendorsCssFiles)
   .pipe(concat('vendors.css'))
-  .pipe(gulp.dest('clientApp/compiled/css'));
+  .pipe(gulp.dest(buildPath + '/css'));
 });
 
 gulp.task('libraryjs',function(){
@@ -38,7 +41,7 @@ gulp.task('libraryjs',function(){
     "**/*.js"
   ]))
   .pipe(concat('libraryjs.js'))
-  .pipe(gulp.dest('clientApp/compiled/js'));
+  .pipe(gulp.dest(buildPath + '/js'));
 });
 
 gulp.task('server', function (cb) {

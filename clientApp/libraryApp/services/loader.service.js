@@ -29,7 +29,8 @@ angular.module('libraryApp').factory('Loader', ['commonConstants', 'BooksAPI', '
                 });
 		},
         loadResourceString: function(resourceId) {
-            return "https://storage.aggregion.com/api/files/" + resourceId + "/shared/data";
+            //return "https://storage.aggregion.com/api/files/" + resourceId + "/shared/data";
+            return 'http://localhost:8080/image/' + resourceId;
         }
 	}
 }]);

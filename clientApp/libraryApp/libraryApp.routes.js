@@ -33,7 +33,7 @@ angular.module('libraryApp').config(function ($stateProvider, $urlRouterProvider
         })
         .state('page404', {
             url: '/404_page_not_found',
-            templateUrl: 'page404/page404.html'
+            templateUrl: 'libraryApp/page404/page404.html'
         });
         $urlRouterProvider.otherwise('/404_page_not_found');
 });

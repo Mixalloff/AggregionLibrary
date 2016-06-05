@@ -1,5 +1,6 @@
 .coverImage, .description {
     float: left;
+    min-width: 200px;
 }
 
 md-whiteframe {
@@ -12,13 +13,38 @@ md-whiteframe {
 }
 
 .info {
-    padding-left: 10px;
+    padding-left: 20px;
+}
+
+.info h2 {
+    margin: 0;
 }
 
 .mainInfo {
-    max-width: 70%;
+    padding: 20px;
+    max-width: 80%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.34);
+    font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Trebuchet MS','Helvetica Neue','Lucida Grande',sans-serif!important;
 }
 
 md-content {
     width: 100%;
+}
+
+.description {
+    color: white;
+    background: none;
+}
+.description h3 {
+    padding: 0;
+}
+
+.download_btn {
+    color: white!important;
+    background-color: rgba(113, 110, 110, 0.5)!important;
+}
+
+.detail_main {
+    align-items: center;
 }

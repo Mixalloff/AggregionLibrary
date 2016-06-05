@@ -1,32 +1,36 @@
 <link rel="stylesheet" href="libraryApp/detailPage/detail.css">
 <!--<md-progress-circular md-mode="indeterminate"></md-progress-circular>-->
 <section layout-align="center center" layout="column">   
-    <md-whiteframe class="md-whiteframe-4dp mainInfo" layout>
-      <cover-img class="coverImage" cover-id="{{detail.bookInfo.cover}}" cover-title="{{detail.bookInfo.title.default}}"></cover-img>
+    <md-whiteframe class="md-whiteframe-4dp mainInfo" layout="column">
       
-      <div class="info">
-        <h2>{{detail.bookInfo.title.default}}</h2>
-        <md-list>
-          <md-list-item ng-repeat="(optionName, option) in detail.bookInfo.options">
-            {{optionName + " : " + option}}
-            <md-divider ng-if="!$last"></md-divider>
-          </md-list-item>
-        </md-list>
-        <md-list class="bundlesList" layout="row">
-          <md-list-item ng-repeat="bundle in detail.bundles">
-            <a ng-href="{{detail.constructResourceString(bundle.resourceId)}}">
-              <md-button class="md-raised">Скачать</md-button>
-            </a>
-            <!--{{bundle}}-->
-          </md-list-item>
-        </md-list>
+      <div class="detail_main" layout>
+        <cover-img class="coverImage" cover-id="{{detail.bookInfo.cover}}" cover-title="{{detail.bookInfo.title.default}}"></cover-img>
+        
+        <div class="info">
+          <h2>{{detail.bookInfo.title.default}}</h2>
+          <md-list>
+            <md-list-item ng-repeat="(optionName, option) in detail.bookInfo.options">
+              {{optionName + " : " + option}}
+              <md-divider ng-if="!$last"></md-divider>
+            </md-list-item>
+          </md-list>
+          <md-list class="bundlesList" layout="row">
+            <md-list-item ng-repeat="bundle in detail.bundles">
+                <md-button ng-href="{{detail.constructResourceString(bundle.resourceId)}}" 
+                           class="md-raised download_btn">
+                  Скачать
+                </md-button>
+            </md-list-item>
+          </md-list>
+        </div>
       </div>
-    </md-whiteframe>
-    
-    <md-content flex layout-padding class="description">
+      <md-content flex layout-padding class="description">
         <h3>Описание</h3>
         {{detail.bookInfo.description.default}}
-    </md-content>
+      </md-content>
+    </md-whiteframe>
+    
+    
     
     
 </section>

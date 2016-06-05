@@ -10,6 +10,7 @@ var buildPath = "clientApp/build";
 
 var userJsPath = "clientApp/libraryApp/**/*.js";
 var userCssPath = "clientApp/libraryApp/content/css/*.css";
+var userImagesPath = "clientApp/libraryApp/content/images/*.png";
 
 // Компоненты bower
 var vendorsJsFiles = mainBowerFiles({
@@ -53,6 +54,11 @@ gulp.task('librarycss',function(){
   .pipe(gulp.dest(buildPath + '/css'));
 });
 
+gulp.task('collect_images',function(){
+  return gulp.src(userImagesPath)
+  .pipe(gulp.dest(buildPath + '/images'));
+});
+
 gulp.task('server', function (cb) {
   exec('node server.js', function (err, stdout, stderr) {
     console.log(stdout);
@@ -66,10 +72,11 @@ gulp.task('watch', function(){
   gulp.watch(vendorsCssFiles, ['vendorscss']);
   gulp.watch(userJsPath, ['libraryjs']);
   gulp.watch(userCssPath, ['librarycss']);
+  gulp.watch(userImagesPath, ['collect_images']);
 });
 
 // Выполняет сборку
-gulp.task('build', ['vendorsjs', 'vendorscss', 'libraryjs', 'librarycss']);
+gulp.task('build', ['vendorsjs', 'vendorscss', 'libraryjs', 'librarycss', 'collect_images']);
 
 // Собирает проект, запускае сервер и отслеживает изменения
 gulp.task('default', ['build', 'server', 'watch']);

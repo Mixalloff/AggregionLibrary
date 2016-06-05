@@ -18,6 +18,7 @@ md-whiteframe {
 
 .info h2 {
     margin: 0;
+    padding-left: 16px;
 }
 
 .mainInfo {
@@ -47,4 +48,12 @@ md-content {
 
 .detail_main {
     align-items: center;
+}
+
+h2, h3 {
+    letter-spacing: 2px;
+}
+
+md-divider {
+    background: #6C6C6C;
 }

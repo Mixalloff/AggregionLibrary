@@ -4,8 +4,6 @@ angular.module('libraryApp').controller("bookDetailCtrl", ["bookInfo", "bookBund
         vm.bookInfo = bookInfo;
         vm.bundles = bookBundles;
         
-        vm.constructResourceString = function (resourceId) {
-            return Loader.loadResourceString(resourceId);
-        }
+        vm.constructResourceString = Loader.loadResourceString;
      }
 ]); 

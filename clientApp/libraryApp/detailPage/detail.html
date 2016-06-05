@@ -1,11 +1,8 @@
 <link rel="stylesheet" href="libraryApp/detailPage/detail.css">
-<!--<md-progress-circular md-mode="indeterminate"></md-progress-circular>-->
 <section layout-align="center center" layout="column">   
     <md-whiteframe class="md-whiteframe-4dp mainInfo" layout="column">
-      
       <div class="detail_main" layout>
         <cover-img class="coverImage" cover-id="{{detail.bookInfo.cover}}" cover-title="{{detail.bookInfo.title.default}}"></cover-img>
-        
         <div class="info">
           <h2>{{detail.bookInfo.title.default}}</h2>
           <md-list>
@@ -17,7 +14,8 @@
           <md-list class="bundlesList" layout="row">
             <md-list-item ng-repeat="bundle in detail.bundles">
                 <md-button ng-href="{{detail.constructResourceString(bundle.resourceId)}}" 
-                           class="md-raised download_btn">
+                           class="md-raised download_btn"
+                           target="_blank">
                   Скачать
                 </md-button>
             </md-list-item>
@@ -29,8 +27,4 @@
         {{detail.bookInfo.description.default}}
       </md-content>
     </md-whiteframe>
-    
-    
-    
-    
 </section>

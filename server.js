@@ -12,13 +12,11 @@ class Server {
     }
     
     initExpress(){
-        // app.use(express.static(__dirname + '/'));
-        // app.use(express.static(__dirname + '/compiled'));
         app.use(express.static(__dirname + '/clientApp'));
+        // Запрос картинки с обработкой 404 ошибки
         app.get('/image/:id', function(req, res) {
             var id = req.params.id,
                 address = 'https://storage.aggregion.com/api/files/' + id + '/shared/data';
-
             request(address, function(err, response, body) {
                 if (err || response.statusCode === 404) {
                     res.redirect(DEFAULT_IMAGE);
@@ -26,7 +24,6 @@ class Server {
                     res.redirect(address);
                 }
             });
-
         });
         app.use('*', function(req, res){
             res.sendFile(__dirname + '/clientApp/index.html');

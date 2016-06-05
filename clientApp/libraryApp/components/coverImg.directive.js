@@ -7,7 +7,7 @@ angular.module('libraryApp').directive('coverImg', ['commonConstants', 'Loader',
             replace: true,
             link: function($scope, element, attrs) {
                 attrs.$observe('coverId', function(value) {
-                    attrs.$set('src', Loader.loadResourceString(value));
+                    attrs.$set('src', Loader.constructCoverRequest(value));
                 });
                 attrs.$set('class', attrs.class);
                 attrs.$observe('coverTitle', function(value) {

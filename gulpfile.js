@@ -8,6 +8,9 @@ var gulp  = require('gulp'),
 // Путь к собранным файлам
 var buildPath = "clientApp/build";
 
+var userJsPath = "clientApp/libraryApp/**/*.js";
+var userCssPath = "clientApp/libraryApp/content/css/*.css";
+
 // Компоненты bower
 var vendorsJsFiles = mainBowerFiles({
   filter:'**/*.js',
@@ -35,13 +38,19 @@ gulp.task('vendorscss',function(){
 });
 
 gulp.task('libraryjs',function(){
-  return gulp.src('clientApp/libraryApp/**/*.js')
+  return gulp.src(userJsPath)
   .pipe(order([
     "**/libraryApp.module.js",
     "**/*.js"
   ]))
   .pipe(concat('libraryjs.js'))
   .pipe(gulp.dest(buildPath + '/js'));
+});
+
+gulp.task('librarycss',function(){
+  return gulp.src(userCssPath)
+  .pipe(concat('librarycss.css'))
+  .pipe(gulp.dest(buildPath + '/css'));
 });
 
 gulp.task('server', function (cb) {
@@ -55,11 +64,12 @@ gulp.task('server', function (cb) {
 gulp.task('watch', function(){
   gulp.watch(vendorsJsFiles, ['vendorsjs']);
   gulp.watch(vendorsCssFiles, ['vendorscss']);
-  gulp.watch('clientApp/libraryApp/**/*.js', ['libraryjs']);
+  gulp.watch(userJsPath, ['libraryjs']);
+  gulp.watch(userCssPath, ['librarycss']);
 });
 
 // Выполняет сборку
-gulp.task('build', ['vendorsjs', 'vendorscss', 'libraryjs']);
+gulp.task('build', ['vendorsjs', 'vendorscss', 'libraryjs', 'librarycss']);
 
 // Собирает проект, запускае сервер и отслеживает изменения
 gulp.task('default', ['build', 'server', 'watch']);

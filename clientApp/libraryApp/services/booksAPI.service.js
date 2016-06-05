@@ -6,7 +6,8 @@ angular.module('libraryApp').factory('BooksAPI', ['$resource', 'commonConstants'
                 return $resource(commonConstants.serverAPI + '/public/catalog',
                     {},
                     {
-                        get: { method:'GET', isArray:true }
+                        get: { method:'GET', isArray:true },
+                        interceptors: ['errorHandlerInterceptor']
                     }
                 );
             },
@@ -14,7 +15,8 @@ angular.module('libraryApp').factory('BooksAPI', ['$resource', 'commonConstants'
                 return $resource(commonConstants.serverAPI + '/public/catalog/:book_id',
                     { book_id: id },
                     {
-                        get: { method:'GET', isArray:false }
+                        get: { method:'GET', isArray:false },
+                        interceptors: ['errorHandlerInterceptor']
                     }
                 );
             },
@@ -22,7 +24,8 @@ angular.module('libraryApp').factory('BooksAPI', ['$resource', 'commonConstants'
                 return $resource(commonConstants.serverAPI + '/public/catalog/:book_id/bundles',
                     { book_id: id },
                     {
-                        get: { method:'GET', isArray:true }
+                        get: { method:'GET', isArray:true },
+                        interceptors: ['errorHandlerInterceptor']
                     }
                 );
             }
